@@ -4,7 +4,12 @@ export default function Player({name, symbol}) {
     const [isEditing, setIsEditing] = useState(false); 
 
     function handleEditClick(){
-        setIsEditing(!isEditing); 
+
+        // We pass a function, it is automatically called by react 
+        // it will get the current state value as an input 
+        // this is because this method !not called instantly, it is scheduled
+        setIsEditing(editing => !editing); 
+        // setIsEditing(!isEditing); 
     }
 
     let playerName = <span className="player-name">{name}</span>; 
