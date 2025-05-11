@@ -9,8 +9,8 @@ export default function Player({name, symbol}) {
         // We pass a function, it is automatically called by react 
         // it will get the current state value as an input 
         // this is because this method !not called instantly, it is scheduled
-        setIsEditing(editing => !editing); 
         // setIsEditing(!isEditing); 
+        setIsEditing(editing => !editing); 
     }
 
     function handleChange(event){
