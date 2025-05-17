@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const initalGameBoard = [
     [null, null, null],
@@ -6,18 +6,20 @@ const initalGameBoard = [
     [null, null, null],
 ];
 
-export default function GameBoard({selectSquareCallback, activePlayerSymbol}) {
-    const [gameBoard, setGameBoard] = useState(initalGameBoard); 
+export default function GameBoard({selectSquareCallback}) {
+    
+    //instead we will use the turns state. 
+    // const [gameBoard, setGameBoard] = useState(initalGameBoard); 
 
-    function handleSelectSquare(row, column){
-        setGameBoard((currentGameBoard) => {
-           //create deep copy
-            const updatedGameBoard = [... currentGameBoard.map((innerArray)=>[...innerArray])];
-            updatedGameBoard[row][column] = activePlayerSymbol;
-            return updatedGameBoard; 
-        }); 
-        selectSquareCallback(); 
-    }
+    // function handleSelectSquare(row, column){
+    //     setGameBoard((currentGameBoard) => {
+    //        //create deep copy
+    //         const updatedGameBoard = [... currentGameBoard.map((innerArray)=>[...innerArray])];
+    //         updatedGameBoard[row][column] = activePlayerSymbol;
+    //         return updatedGameBoard; 
+    //     }); 
+    //     selectSquareCallback(); 
+    // }
 
     return (
         <ol id="game-board">
@@ -26,7 +28,8 @@ export default function GameBoard({selectSquareCallback, activePlayerSymbol}) {
                     <ol>
                         {row.map((playerSymbol, playerSymbolIndex) => (
                             <li key={playerSymbolIndex}>
-                                <button onClick={() => handleSelectSquare(rowIndex, playerSymbolIndex)}>{playerSymbol}</button>
+                                {/* <button onClick={() => handleSelectSquare(rowIndex, playerSymbolIndex)}>{playerSymbol}</button> */}
+                                <button onClick={selectSquareCallback}>{playerSymbol}</button>
                             </li>    
                         ))}
                     </ol>
