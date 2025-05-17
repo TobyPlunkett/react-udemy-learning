@@ -6,16 +6,17 @@ const initalGameBoard = [
     [null, null, null],
 ];
 
-export default function GameBoard( ) {
+export default function GameBoard({selectSquareCallback, activePlayerSymbol}) {
     const [gameBoard, setGameBoard] = useState(initalGameBoard); 
 
     function handleSelectSquare(row, column){
         setGameBoard((currentGameBoard) => {
            //create deep copy
             const updatedGameBoard = [... currentGameBoard.map((innerArray)=>[...innerArray])];
-            updatedGameBoard[row][column] = "X";
+            updatedGameBoard[row][column] = activePlayerSymbol;
             return updatedGameBoard; 
         }); 
+        selectSquareCallback(); 
     }
 
     return (

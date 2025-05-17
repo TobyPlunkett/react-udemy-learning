@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({name, symbol}) {
+export default function Player({name, symbol, isActive}) {
     const [isEditing, setIsEditing] = useState(false); 
     const [playerName, setPlayerName] = useState(name); 
 
@@ -24,7 +24,8 @@ export default function Player({name, symbol}) {
     }
 
     return (
-        <li>
+        //adds active class to this player component if isActive is true
+        <li className={isActive ? 'active' : undefined}>
             <span className="player">
                 
                 {editablePlayerName}
